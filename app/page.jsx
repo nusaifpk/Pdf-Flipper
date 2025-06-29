@@ -1,5 +1,5 @@
 import PDFFlipbook from './components/PDFFlipbook';
 
-export default function Home() {
+export default function HomePage() {
   return <PDFFlipbook pdfurl="/HajrEmagazine2.pdf" />;
 }
