@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect, useState } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { BounceLoader } from 'react-spinners';
@@ -20,7 +19,6 @@ const PDFFlipbookClient = ({ pdfurl }) => {
         setDimensions({ width: 450, height: 630 });
       }
     };
-
     updateSize();
     window.addEventListener('resize', updateSize);
     return () => window.removeEventListener('resize', updateSize);
