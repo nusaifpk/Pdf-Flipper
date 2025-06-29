@@ -1,4 +1,4 @@
-import PDFFlipbook from "./components/PDFFlipbook";
+import PDFFlipbook from "./components/PDFFlipbookClient";
 
 export default function Home() {
   return (
