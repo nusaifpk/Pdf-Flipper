@@ -4,12 +4,11 @@ import React, { useEffect, useState } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { BounceLoader } from 'react-spinners';
 
-const PDFFlipbook = ({ pdfurl }) => {
+const PDFFlipbookClient = ({ pdfurl }) => {
   const [loading, setLoading] = useState(true);
   const [dimensions, setDimensions] = useState({ width: 500, height: 700 });
   const [pages, setPages] = useState([]);
 
-  // Handle responsive sizing
   useEffect(() => {
     const updateSize = () => {
       const screenWidth = window.innerWidth;
@@ -27,13 +26,12 @@ const PDFFlipbook = ({ pdfurl }) => {
     return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  // Load PDF dynamically
   useEffect(() => {
     const loadPDF = async () => {
-      try {
-        const pdfjsLib = await import('pdfjs-dist/build/pdf');
-        pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdfjs/pdf.worker.min.js';
+      const pdfjsLib = await import('pdfjs-dist/build/pdf');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdfjs/pdf.worker.min.js';
 
+      try {
         const loadingTask = pdfjsLib.getDocument(pdfurl);
         const pdf = await loadingTask.promise;
         const pagesImages = [];
@@ -97,4 +95,4 @@ const PDFFlipbook = ({ pdfurl }) => {
   );
 };
 
-export default PDFFlipbook;
+export default PDFFlipbookClient;
